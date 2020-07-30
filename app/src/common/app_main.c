@@ -229,6 +229,11 @@ void app_main() {
                 handleApdu(&flags, &tx, rx);
                 CHECK_APP_CANARY()
             }
+            CATCH(EXCEPTION_IO_RESET)
+            {
+                // reset IO and UX before continuing
+                continue;
+            }
             CATCH_OTHER(e);
             {
                 switch (e & 0xF000) {
