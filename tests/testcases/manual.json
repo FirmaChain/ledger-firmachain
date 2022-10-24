@@ -148,7 +148,7 @@
     "name": "completeTransfer",
     "tx": {
       "account_number": "0",
-      "chain_id": "cosmoshub-4",
+      "chain_id": "colosseum-1",
       "fee": {
         "amount": [
           {
@@ -260,7 +260,7 @@
     "name": "completeTransferNoMemo",
     "tx": {
       "account_number": "0",
-      "chain_id": "cosmoshub-4",
+      "chain_id": "colosseum-1",
       "fee": {
         "amount": [
           {
@@ -371,7 +371,7 @@
     "name": "completeTransferEmptyMemo",
     "tx": {
       "account_number": "0",
-      "chain_id": "cosmoshub-4",
+      "chain_id": "colosseum-1",
       "fee": {
         "amount": [
           {
@@ -512,7 +512,7 @@
     "name": "multipleTransfers",
     "tx": {
       "account_number": "0",
-      "chain_id": "cosmoshub-4",
+      "chain_id": "colosseum-1",
       "fee": {
         "amount": [
           {
@@ -691,7 +691,7 @@
     "name": "delegation",
     "tx": {
       "account_number": "6571",
-      "chain_id": "cosmoshub-4",
+      "chain_id": "colosseum-1",
       "fee": {
         "amount": [
           {
@@ -780,7 +780,7 @@
     "name": "proposal",
     "tx": {
       "account_number": "2",
-      "chain_id": "cosmoshub-4",
+      "chain_id": "colosseum-1",
       "fee": {
         "amount": [],
         "gas": "500000"
@@ -869,7 +869,7 @@
     "name": "delegation2",
     "tx": {
       "account_number": "6571",
-      "chain_id": "cosmoshub-4",
+      "chain_id": "colosseum-1",
       "fee": {
         "amount": [
           {
@@ -1065,7 +1065,7 @@
     "name": "groupingSmall",
     "tx": {
       "account_number": "108",
-      "chain_id": "cosmoshub-4",
+      "chain_id": "colosseum-1",
       "fee": {
         "amount": [
           {
@@ -1469,7 +1469,7 @@
     "name": "combined",
     "tx": {
       "account_number": "108",
-      "chain_id": "cosmoshub-4",
+      "chain_id": "colosseum-1",
       "fee": {
         "amount": [
           {
@@ -1606,7 +1606,7 @@
     "name": "completeTransferWithTipsBasic",
     "tx": {
       "account_number": "0",
-      "chain_id": "cosmoshub-4",
+      "chain_id": "colosseum-1",
       "fee": {
         "amount": [
           {
@@ -1733,7 +1733,7 @@
     "name": "MsgWithdrawValidatorCommission",
     "tx": {
       "account_number": "6571",
-      "chain_id": "cosmoshub-4",
+      "chain_id": "colosseum-1",
       "fee": {
         "amount": [
           {
