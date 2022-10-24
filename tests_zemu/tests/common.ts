@@ -55,14 +55,14 @@
      {
        type: 'cosmos-sdk/MsgWithdrawDelegationReward',
        value: {
-         delegator_address: 'firma1ahp55jj5a0mld3yl67yfwdtr6mfq4d44kuseys',
+         delegator_address: 'firma1f8s747l4s50l9cjwfe990g6hw6cgrpmruycw0e',
          validator_address: 'firmavaloper1nxu2qzdheycs58k6j9xgvpz3n35a4rvn8dydw2',
        },
      },
      {
        type: 'cosmos-sdk/MsgWithdrawDelegationReward',
        value: {
-         delegator_address: 'firma1ahp55jj5a0mld3yl67yfwdtr6mfq4d44kuseys',
+         delegator_address: 'firma1f8s747l4s50l9cjwfe990g6hw6cgrpmruycw0e',
          validator_address: 'firmavaloper1gupgnsfgvs08watwtfdl4a5r9589cus3f36mhz',
        },
      },
@@ -157,7 +157,7 @@
            },
          ],
          memo: 'memo_text_goes_here',
-         signer: 'firma1ahp55jj5a0mld3yl67yfwdtr6mfq4d44kuseys',
+         signer: 'firma1f8s747l4s50l9cjwfe990g6hw6cgrpmruycw0e',
        },
      },
    ],
