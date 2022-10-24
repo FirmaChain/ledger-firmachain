@@ -721,13 +721,13 @@
     "validationErr": "No error",
     "expected": [
       "0 | Type : Delegate",
-      "1 | Amount : 1.000000 DSM",
+      "1 | Amount : 1.000000 FCT",
       "2 | Delegator [1/2] : cosmos102hty0jv2s29lyc4u0tv97z9v298e24t",
       "2 | Delegator [2/2] : 3vwtpl",
       "3 | Validator [1/2] : cosmosvaloper1grgelyng2v6v3t8z87wu3sxgt",
       "3 | Validator [2/2] : 9m5s03xfytvz7",
       "4 | Memo : Zondax.ch",
-      "5 | Fee : 0.005000 DSM"
+      "5 | Fee : 0.005000 FCT"
     ],
     "expert": false
   },
@@ -899,13 +899,13 @@
     "validationErr": "No error",
     "expected": [
       "0 | Type : Delegate",
-      "1 | Amount : 1.000000 DSM",
+      "1 | Amount : 1.000000 FCT",
       "2 | Delegator [1/2] : cosmos102hty0jv2s29lyc4u0tv97z9v298e24t",
       "2 | Delegator [2/2] : 3vwtpl",
       "3 | Validator [1/2] : cosmosvaloper1grgelyng2v6v3t8z87wu3sxgt",
       "3 | Validator [2/2] : 9m5s03xfytvz7",
       "4 | Memo : Delegated with Ledger from union.market",
-      "5 | Fee : 0.005000 DSM"
+      "5 | Fee : 0.005000 FCT"
     ],
     "expert": false
   },
@@ -1104,7 +1104,7 @@
       "2 | Validator [2/2] : vjhennyh568ys",
       "3 | Validator [1/2] : cosmosvaloper1x88j7vp2xnw3zec8ur3g4waxy",
       "3 | Validator [2/2] : cyz7m0mahdv3p",
-      "4 | Fee : 0.000600 DSM"
+      "4 | Fee : 0.000600 FCT"
     ],
     "expert": false
   },
@@ -1511,10 +1511,10 @@
       "2 | Validator [1/2] : cosmosvaloper1648ynlpdw7fqa2axt0w2yp3fk",
       "2 | Validator [2/2] : 542junl7rsvq6",
       "3 | Type : Delegate",
-      "4 | Amount : 20.139397 DSM",
+      "4 | Amount : 20.139397 FCT",
       "5 | Validator [1/2] : cosmosvaloper1648ynlpdw7fqa2axt0w2yp3fk",
       "5 | Validator [2/2] : 542junl7rsvq6",
-      "6 | Fee : 0.000600 DSM"
+      "6 | Fee : 0.000600 FCT"
     ],
     "expert": false
   },
@@ -1761,7 +1761,7 @@
       "1 | Validator [1/2] : cosmosvaloper1grgelyng2v6v3t8z87wu3sxgt",
       "1 | Validator [2/2] : 9m5s03xfytvz7",
       "2 | Memo : Zondax.ch",
-      "3 | Fee : 0.005000 DSM"
+      "3 | Fee : 0.005000 FCT"
     ],
     "expert": false
   },
