@@ -78,7 +78,7 @@
        const app = new CosmosApp(sim.getTransport())
  
        // Derivation path. First 3 items are automatically hardened!
-       const path = [44, 852, 5, 0, 3]
+       const path = [44, 7777777, 5, 0, 3]
        const resp = await app.getAddressAndPubKey(path, 'firma')
  
        console.log(resp)
@@ -89,7 +89,7 @@
        expect(resp).toHaveProperty('bech32_address')
        expect(resp).toHaveProperty('compressed_pk')
  
-       expect(resp.bech32_address).toEqual('firma1k3pegwjj0nh4cwmr7uav5v9hrxqy4j9qan3wj0')
+       expect(resp.bech32_address).toEqual('firma1gyhd9drdxclkenwnm5frscqqnv9mu007sjuw4k')
        expect(resp.compressed_pk.length).toEqual(33)
      } finally {
        await sim.close()
@@ -103,7 +103,7 @@
        const app = new CosmosApp(sim.getTransport())
  
        // Derivation path. First 3 items are automatically hardened!
-       const path = [44, 852, 5, 0, 3]
+       const path = [44, 7777777, 5, 0, 3]
        const respRequest = app.showAddressAndPubKey(path, 'firma')
  
        // Wait until we are not in the main menu
@@ -119,7 +119,7 @@
        expect(resp).toHaveProperty('bech32_address')
        expect(resp).toHaveProperty('compressed_pk')
  
-       expect(resp.bech32_address).toEqual('firma1k3pegwjj0nh4cwmr7uav5v9hrxqy4j9qan3wj0')
+       expect(resp.bech32_address).toEqual('firma1gyhd9drdxclkenwnm5frscqqnv9mu007sjuw4k')
        expect(resp.compressed_pk.length).toEqual(33)
      } finally {
        await sim.close()
@@ -133,7 +133,7 @@
        const app = new CosmosApp(sim.getTransport())
  
        // Derivation path. First 3 items are automatically hardened!
-       const path = [44, 852, 2147483647, 0, 4294967295]
+       const path = [44, 7777777, 2147483647, 0, 4294967295]
        const resp = await app.showAddressAndPubKey(path, 'firma')
        console.log(resp)
  
@@ -156,7 +156,7 @@
        await sim.clickLeft()
  
        // Derivation path. First 3 items are automatically hardened!
-       const path = [44, 852, 2147483647, 0, 4294967295]
+       const path = [44, 7777777, 2147483647, 0, 4294967295]
        const respRequest = app.showAddressAndPubKey(path, 'firma')
  
        // Wait until we are not in the main menu
@@ -172,7 +172,7 @@
        expect(resp).toHaveProperty('bech32_address')
        expect(resp).toHaveProperty('compressed_pk')
  
-       expect(resp.bech32_address).toEqual('firma1v98s2c4snzt55kjq3g5cqzmzs753vr8qgw7zwx')
+       expect(resp.bech32_address).toEqual('firma1xrqlxdmv4tmtwwuep84uphq2zx2v39nzz8sqed')
        expect(resp.compressed_pk.length).toEqual(33)
      } finally {
        await sim.close()
@@ -185,7 +185,7 @@
        await sim.start({ ...DEFAULT_OPTIONS, model: m.name })
        const app = new CosmosApp(sim.getTransport())
  
-       const path = [44, 852, 0, 0, 0]
+       const path = [44, 7777777, 0, 0, 0]
        const tx = JSON.stringify(example_tx_str_basic)
  
        // get address / publickey
@@ -230,7 +230,7 @@
        await sim.start({ ...DEFAULT_OPTIONS, model: m.name })
        const app = new CosmosApp(sim.getTransport())
  
-       const path = [44, 852, 0, 0, 0]
+       const path = [44, 7777777, 0, 0, 0]
        const tx = JSON.stringify(example_tx_str_basic2)
  
        // get address / publickey
@@ -274,7 +274,7 @@
        await sim.start({ ...DEFAULT_OPTIONS, model: m.name })
        const app = new CosmosApp(sim.getTransport())
  
-       const path = [44, 852, 0, 0, 0]
+       const path = [44, 7777777, 0, 0, 0]
        const tx = JSON.stringify(example_tx_str_basic)
  
        // get address / publickey
@@ -319,7 +319,7 @@
        await sim.start({ ...DEFAULT_OPTIONS, model: m.name })
        const app = new CosmosApp(sim.getTransport())
  
-       const path = [44, 852, 0, 0, 0]
+       const path = [44, 7777777, 0, 0, 0]
        const tx = JSON.stringify(ibc_denoms)
  
        // get address / publickey

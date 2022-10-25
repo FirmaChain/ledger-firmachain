@@ -56,14 +56,14 @@
        type: 'cosmos-sdk/MsgWithdrawDelegationReward',
        value: {
          delegator_address: 'firma1f8s747l4s50l9cjwfe990g6hw6cgrpmruycw0e',
-         validator_address: 'firmavaloper1nxu2qzdheycs58k6j9xgvpz3n35a4rvn8dydw2',
+         validator_address: 'firmavaloper1p90hu6pqd57xgdauf0l8dwpau73jkk7273y6ck',
        },
      },
      {
        type: 'cosmos-sdk/MsgWithdrawDelegationReward',
        value: {
          delegator_address: 'firma1f8s747l4s50l9cjwfe990g6hw6cgrpmruycw0e',
-         validator_address: 'firmavaloper1gupgnsfgvs08watwtfdl4a5r9589cus3f36mhz',
+         validator_address: 'firmavaloper1p90hu6pqd57xgdauf0l8dwpau73jkk7273y6ck',
        },
      },
    ],
