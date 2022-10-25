@@ -63,7 +63,7 @@
        type: 'cosmos-sdk/MsgWithdrawDelegationReward',
        value: {
          delegator_address: 'firma1f8s747l4s50l9cjwfe990g6hw6cgrpmruycw0e',
-         validator_address: 'firmavaloper1p90hu6pqd57xgdauf0l8dwpau73jkk7273y6ck',
+         validator_address: 'firmavaloper1x0lqg5vcynse3r6mug8vteu77cqyaqkgw2rg3x',
        },
      },
    ],
