@@ -1,94 +1,14 @@
 # Ledger FirmaChain app
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![CircleCI](https://circleci.com/gh/Zondax/ledger-cosmos.svg?style=shield)](https://circleci.com/gh/Zondax/ledger-cosmos)
+[![CodeFactor](https://www.codefactor.io/repository/github/zondax/ledger-cosmos/badge)](https://www.codefactor.io/repository/github/zondax/ledger-cosmos)
 
-This project contains the Cosmos app for Ledger Nano S and X.
+This project contains the FirmaChain app for Ledger Nano S and X. This project is forked from [Ledger Cosmos app](https://github.com/LedgerHQ/app-cosmos).
 
-- Ledger Nano S/X Cosmos app
+- Ledger Nano S/X FirmaChain app
 - Specs / Documentation
 - C++ unit tests
 - Zemu tests
-
-Now we are editing content.
-
-``` js
-// INFO
-// When docker runs in privilege mode on a development, 
-// the Linux machine does not recognize the ledger without input sudo command.
-
-// If you want to do it, you have to add sudo, but I don't think this makes sense. 
-// So, it's better to have a VM for build a ledger build and process it there.
-
-git clone https://github.com/firmachain/ledger-firmachain
-cd ledger-firmachain
-
-git submodule update --init --recursive
-sudo apt update && sudo apt-get -y install build-essential git wget cmake libssl-dev libgmp-dev autoconf libtool
-
-// if you have a problem to install build-essential, click this link and solve it
-// The following packages have unmet dependencies
-// https://stackoverflow.com/questions/66869441/unable-to-install-g-and-build-essentials-in-ubuntu-20-04
-
-
-// install node.js latest version
-curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-sudo apt-get install -y nodejs
-
-// install python3
-sudo apt install -y python-is-python3
-sudo apt install -y python3-pip
-
-// check dependency
-make deps
-
-// install docker
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo apt-key fingerprint 0EBFCD88
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-
-sudo apt-get update
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io
-
-// give user permission
-sudo usermod -aG docker $USER
-
-// caution: need reboot
-sudo reboot
-
-// move another folder
-git clone https://github.com/LedgerHQ/ledger-app-builder.git
-cd ledger-app-builder
-// need to wait for a long time.
-sudo docker build -t ledger-app-builder:latest .
-
-// https://developers.ledger.com/docs/nano-app/load/
-// install ledger driver
-wget -q -O - https://raw.githubusercontent.com/LedgerHQ/udev-rules/master/add_udev_rules.sh | sudo bash
-
-cd ledger-firmachain
-sudo docker run --rm -ti -v "/dev/bus/usb:/dev/bus/usb" -v "$(realpath .):/app" --privileged ledger-app-builder:latest
-
-// inside docker (input exit to get out of docker)
-make clean
-make 
-make load
-
-
-// Relate to ledger X 
-// The Nano X does not support side loading, therefore you must use the device emulator Speculos for loading to work. 
-// See how to install and use it. For the Nano S, you can read //the following instructions.
-
-// make for ledger X
-BOLOS_SDK=$NANOX_SDK make
-
-// for remove app
-make delete
-
-
-```
-
-We're going to upload and register the firmachain ledger app to ledger-live soon.
-
-===========================================
 
 The Cosmos app is already available in [Ledger Live](https://www.ledger.com/pages/ledger-live). Our preferred and recommended hardware wallet!
 
