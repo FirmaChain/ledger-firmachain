@@ -25,8 +25,7 @@ typedef struct {
 
 // To enable custom config for a new chain, just add a new entry in this array
 // with path, hrp and encoding
-static const chain_config_t chainConfig[] = {
-    {7777777, "firma", BECH32_COSMOS}};
+static const chain_config_t chainConfig[] = {{7777777, "firma", BECH32_COSMOS}};
 
 static const uint32_t chainConfigLen =
     sizeof(chainConfig) / sizeof(chainConfig[0]);
