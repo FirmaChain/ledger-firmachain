@@ -20,4 +20,4 @@ jobs:
     with:
       branch_for_cosmos: ${{ github.ref }}
       repo_for_cosmos: ${{ github.repository }}
-      test_filter: '"ATOM or atom or Cosmos or cosmos"'
+      test_filter: '"ATOM or atom or Cosmos or cosmos or Firmachain or firmachain or FCT or fct"'

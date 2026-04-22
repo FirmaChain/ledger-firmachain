@@ -27,7 +27,7 @@ endif
 include $(BOLOS_SDK)/Makefile.defines
 
 # Application name
-APPNAME = "Cosmos"
+APPNAME = "Firmachain"
 
 # Application version
 include $(CURDIR)/Makefile.version
@@ -43,8 +43,8 @@ APP_SOURCE_PATH += ../deps/jsmn/src
 # https://developers.ledger.com/docs/embedded-app/design-requirements/#device-icon
 ICON_NANOX = nanox_icon.gif
 ICON_NANOSP = nanox_icon.gif
-ICON_STAX = stax_icon.gif
-ICON_FLEX = flex_icon.gif
+ICON_STAX = stax_icon.png
+ICON_FLEX = flex_icon.png
 ICON_APEX_P = apex_p_icon.png
 
 # Application allowed derivation curves.
@@ -61,7 +61,7 @@ CURVE_APP_LOAD_PARAMS = secp256k1
 # If your app needs it, you can specify multiple path by using:
 # `PATH_APP_LOAD_PARAMS = "44'/1'" "45'/1'"`
 
-APPPATH =  "44'/118'" "44'/60'"
+APPPATH =  "44'/7777777'"
 $(info PATHS LIST = $(APPPATH))
 PATH_APP_LOAD_PARAMS = $(APPPATH)
 
@@ -72,7 +72,7 @@ PATH_APP_LOAD_PARAMS = $(APPPATH)
 #   * It must at least contains one value.
 #   * Values can be the app ticker or anything else but should be unique.
 ifeq ($(COIN),)
-    COIN=ATOM
+    COIN=FCT
 endif
 $(info COIN  = [$(COIN)])
 VARIANT_PARAM=COIN
@@ -125,7 +125,7 @@ endif
 # Add the PRODUCTION_BUILD definition to the compiler flags
 DEFINES += PRODUCTION_BUILD=$(PRODUCTION_BUILD)
 
-ifeq ($(COIN),ATOM)
+ifeq ($(COIN),FCT)
     HAVE_SWAP ?= 1
 endif
 
