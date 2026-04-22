@@ -109,8 +109,7 @@ __Z_INLINE void extractHDPath(uint32_t rx, uint32_t offset) {
 
   // Check values
   if (hdPath[0] != HDPATH_0_DEFAULT ||
-      ((hdPath[1] != HDPATH_1_DEFAULT) &&
-       (hdPath[1] != HDPATH_ETH_1_DEFAULT)) ||
+      hdPath[1] != HDPATH_FIRMA_1_DEFAULT ||
       hdPath[3] != HDPATH_3_DEFAULT) {
     THROW(APDU_CODE_INVALID_HD_PATH_COIN_VALUE);
   }
@@ -119,7 +118,7 @@ __Z_INLINE void extractHDPath(uint32_t rx, uint32_t offset) {
   if (!app_mode_expert()) {
     for (int i = 2; i < HDPATH_LEN_DEFAULT; i++) {
       // hardened or unhardened values should be below 20
-      if ((hdPath[i] & 0x7FFFFFFF) > 100)
+      if ((hdPath[i] & 0x7FFFFFFFu) > 100u)
         THROW(APDU_CODE_INVALID_HD_PATH_VALUE);
     }
   }
