@@ -21,21 +21,21 @@ import {
   defaultOptions,
   DEVICE_MODELS,
   example_tx_str_basic,
-  example_tx_str_basic2,
   ibc_denoms,
   AMINO_JSON_TX,
-  setWithdrawAddress,
-  cliGovDeposit,
-  example_tx_str_msgMultiSend,
-  big_transaction,
   wasm_execute_contract_boundary_test,
+  firma_tx_str_basic,
+  firma_tx_str_basic2,
+  firma_setWithdrawAddress,
+  firma_govDeposit,
+  firma_msgMultiSend,
 } from './common'
 
 // @ts-ignore
 import secp256k1 from 'secp256k1/elliptic'
 // @ts-ignore
 import crypto from 'crypto'
-import { ButtonKind, IButton, SwipeDirection } from '@zondax/zemu/dist/types'
+import { ButtonKind, IButton } from '@zondax/zemu/dist/types'
 import { getTouchElement } from "@zondax/zemu/dist/buttons";
 
 jest.setTimeout(120000)
@@ -57,9 +57,9 @@ describe('Amino', function () {
       await sim.start({ ...defaultOptions, model: m.name })
       const app = new CosmosApp(sim.getTransport())
 
-      const path = "m/44'/118'/0'/0/0"
-      const tx = Buffer.from(JSON.stringify(example_tx_str_basic), 'utf-8')
-      const hrp = 'cosmos'
+      const path = "m/44'/7777777'/0'/0/0"
+      const tx = Buffer.from(JSON.stringify(firma_tx_str_basic), 'utf-8')
+      const hrp = 'firma'
 
       // get address / publickey
       const respPk = await app.getAddressAndPubKey(path, hrp)
@@ -101,9 +101,9 @@ describe('Amino', function () {
       await sim.start({ ...defaultOptions, model: m.name })
       const app = new CosmosApp(sim.getTransport())
 
-      const path = "m/44'/118'/0'/0/0"
-      const tx = Buffer.from(JSON.stringify(example_tx_str_basic2))
-      const hrp = 'cosmos'
+      const path = "m/44'/7777777'/0'/0/0"
+      const tx = Buffer.from(JSON.stringify(firma_tx_str_basic2))
+      const hrp = 'firma'
 
       // get address / publickey
       const respPk = await app.getAddressAndPubKey(path, hrp)
@@ -145,9 +145,9 @@ describe('Amino', function () {
       await sim.start({ ...defaultOptions, model: m.name })
       const app = new CosmosApp(sim.getTransport())
 
-      const path = "m/44'/118'/0'/0/0"
-      const tx = Buffer.from(JSON.stringify(example_tx_str_basic))
-      const hrp = 'cosmos'
+      const path = "m/44'/7777777'/0'/0/0"
+      const tx = Buffer.from(JSON.stringify(firma_tx_str_basic))
+      const hrp = 'firma'
 
       // get address / publickey
       const respPk = await app.getAddressAndPubKey(path, hrp)
@@ -189,9 +189,9 @@ describe('Amino', function () {
       await sim.start({ ...defaultOptions, model: m.name })
       const app = new CosmosApp(sim.getTransport())
 
-      const path = "m/44'/118'/0'/0/0"
+      const path = "m/44'/7777777'/0'/0/0"
       const tx = Buffer.from(JSON.stringify(ibc_denoms))
-      const hrp = 'cosmos'
+      const hrp = 'firma'
 
       // get address / publickey
       const respPk = await app.getAddressAndPubKey(path, hrp)
@@ -233,9 +233,9 @@ describe('Amino', function () {
       await sim.start({ ...defaultOptions, model: m.name })
       const app = new CosmosApp(sim.getTransport())
 
-      const path = "m/44'/118'/0'/0/0"
-      const tx = Buffer.from(JSON.stringify(setWithdrawAddress))
-      const hrp = 'cosmos'
+      const path = "m/44'/7777777'/0'/0/0"
+      const tx = Buffer.from(JSON.stringify(firma_setWithdrawAddress))
+      const hrp = 'firma'
 
       // get address / publickey
       const respPk = await app.getAddressAndPubKey(path, hrp)
@@ -277,9 +277,9 @@ describe('Amino', function () {
       await sim.start({ ...defaultOptions, model: m.name })
       const app = new CosmosApp(sim.getTransport())
 
-      const path = "m/44'/118'/0'/0/0"
-      const tx = Buffer.from(JSON.stringify(cliGovDeposit))
-      const hrp = 'cosmos'
+      const path = "m/44'/7777777'/0'/0/0"
+      const tx = Buffer.from(JSON.stringify(firma_govDeposit))
+      const hrp = 'firma'
 
       // get address / publickey
       const respPk = await app.getAddressAndPubKey(path, hrp)
@@ -324,9 +324,9 @@ describe('Amino', function () {
       // Activate expert mode
       await sim.toggleExpertMode()
 
-      const path = "m/44'/118'/0'/0/0"
-      const tx = Buffer.from(JSON.stringify(example_tx_str_msgMultiSend))
-      const hrp = 'cosmos'
+      const path = "m/44'/7777777'/0'/0/0"
+      const tx = Buffer.from(JSON.stringify(firma_msgMultiSend))
+      const hrp = 'firma'
 
       // get address / publickey
       const respPk = await app.getAddressAndPubKey(path, hrp)
@@ -373,9 +373,9 @@ describe('Amino', function () {
       // Activate expert mode
       await sim.toggleExpertMode()
 
-      const path = "m/44'/118'/0'/0/0"
+      const path = "m/44'/7777777'/0'/0/0"
       const tx = Buffer.from(JSON.stringify(wasm_execute_contract_boundary_test))
-      const hrp = 'neutron'
+      const hrp = 'firma'
 
       // get address / publickey
       const respPk = await app.getAddressAndPubKey(path, hrp)
@@ -411,7 +411,8 @@ describe('Amino', function () {
     }
   })
 
-  test.concurrent.each(DEVICE_MODELS)('SetWithdrawAddress-eth', async function (m) {
+  // ETH path tests removed (44'/60' not supported by Firmachain)
+  xtest('SetWithdrawAddress-eth', async function () {
     const sim = new Zemu(m.path)
     try {
       await sim.start({ ...defaultOptions, model: m.name })
@@ -421,7 +422,7 @@ describe('Amino', function () {
       await sim.toggleExpertMode()
 
       const path = "m/44'/60'/0'/0/0"
-      const tx = Buffer.from(JSON.stringify(setWithdrawAddress))
+      const tx = Buffer.from(JSON.stringify(firma_setWithdrawAddress))
       const hrp = 'inj'
 
       // get address / publickey
@@ -458,7 +459,7 @@ describe('Amino', function () {
     }
   })
 
-  test.concurrent.each(DEVICE_MODELS)('sign basic normal Eth', async function (m) {
+  xtest('sign basic normal Eth', async function () {
     const sim = new Zemu(m.path)
     try {
       await sim.start({ ...defaultOptions, model: m.name })
@@ -508,7 +509,7 @@ describe('Amino', function () {
     }
   })
 
-  test.concurrent.each(DEVICE_MODELS)('sign basic normal Eth no expert', async function (m) {
+  xtest('sign basic normal Eth no expert', async function () {
     const sim = new Zemu(m.path)
     try {
       await sim.start({ ...defaultOptions, model: m.name })

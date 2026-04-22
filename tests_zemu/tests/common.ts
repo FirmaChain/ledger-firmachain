@@ -366,6 +366,180 @@ export const big_transaction = "7b226163636f756e745f6e756d626572223a2230222c2263
 // Test case for string length boundary issue (GitHub issue)
 // This transaction triggers buffer boundary edge cases in tx_display_translation
 // NOTE: Keys must be in alphabetical order for Cosmos transactions
+export const firma_tx_str_basic = {
+  account_number: '108',
+  chain_id: 'colosseum-1',
+  fee: {
+    amount: [
+      {
+        amount: '600',
+        denom: 'ufct',
+      },
+    ],
+    gas: '200000',
+  },
+  memo: '',
+  msgs: [
+    {
+      type: 'cosmos-sdk/MsgWithdrawDelegationReward',
+      value: {
+        delegator_address: 'firma1w34k53py5v5xyluazqpq65agyajavep2d6hhtd',
+        validator_address: 'firmavaloper1kn3wugetjuy4zetlq6wadchfhvu3x740gddm8p',
+      },
+    },
+    {
+      type: 'cosmos-sdk/MsgWithdrawDelegationReward',
+      value: {
+        delegator_address: 'firma1w34k53py5v5xyluazqpq65agyajavep2d6hhtd',
+        validator_address: 'firmavaloper1sjllsnramtg3ewxqwwrwjxfgc4n4ef9ult020g',
+      },
+    },
+  ],
+  sequence: '106',
+}
+
+export const firma_tx_str_basic2 = {
+  account_number: '482',
+  chain_id: 'colosseum-1',
+  fee: {
+    amount: [],
+    gas: '10000000',
+  },
+  memo: '',
+  msgs: [
+    {
+      type: 'somechain/MsgNew',
+      value: {
+        coins: [
+          {
+            amount: '20139397',
+            asset: 'ufct',
+          },
+        ],
+        memo: 'memo_text_goes_here',
+        signer: 'firma1w34k53py5v5xyluazqpq65agyajavep2d6hhtd',
+      },
+    },
+  ],
+  sequence: '6',
+}
+
+export const firma_setWithdrawAddress = {
+  account_number: '8',
+  chain_id: 'colosseum-1',
+  fee: {
+    amount: [
+      {
+        amount: '5000',
+        denom: 'ufct',
+      },
+    ],
+    gas: '200000',
+  },
+  memo: '',
+  msgs: [
+    {
+      type: 'cosmos-sdk/MsgSetWithdrawAddress',
+      value: {
+        delegator_address: 'firma1hr9x0sjvel6z3vt9qny8sdd5gnnlgk0p5k9dfk',
+        withdraw_address: 'firma12d64j98tjjpqkx70r08aspc4nvntqp2w5ataur',
+      },
+    },
+    {
+      type: 'cosmos-sdk/MsgWithdrawDelegationReward',
+      value: {
+        delegator_address: 'firma1hr9x0sjvel6z3vt9qny8sdd5gnnlgk0p5k9dfk',
+        validator_address: 'firmavaloper13dr26wdygna3s8fdl5tlc45m2le2ydydcj4tgz',
+      },
+    },
+  ],
+  sequence: '7',
+}
+
+export const firma_govDeposit = {
+  account_number: '8',
+  chain_id: 'colosseum-1',
+  fee: {
+    amount: [],
+    gas: '200000',
+  },
+  memo: 'A B C',
+  msgs: [
+    {
+      type: 'cosmos-sdk/MsgDeposit',
+      value: {
+        amount: [
+          {
+            amount: '10',
+            denom: 'ufct',
+          },
+        ],
+        depositor: 'firma1xl2256vdh0j68khz9wq88hnyqcq0f5f4vwzzk4',
+        proposal_id: '1',
+      },
+    },
+  ],
+  sequence: '2',
+}
+
+export const firma_msgMultiSend = {
+  account_number: '10',
+  chain_id: 'colosseum-1',
+  fee: {
+    amount: [],
+    gas: '200000',
+  },
+  memo: '',
+  msgs: [
+    {
+      type: 'cosmos-sdk/MsgMultiSend',
+      value: {
+        inputs: [
+          {
+            address: 'firma1w4efqfklkezgyt6lncjdwxncrzyzpr2e83shv9',
+            coins: [
+              {
+                amount: '30',
+                denom: 'ufct',
+              },
+            ],
+          },
+        ],
+        outputs: [
+          {
+            address: 'firma184hgxlzat3qhm7p28563w4jyw4aa3wcgapjl6k',
+            coins: [
+              {
+                amount: '10',
+                denom: 'ufct',
+              },
+            ],
+          },
+          {
+            address: 'firma1pfyz36qx8z8dm8ktd75mwx5j5vsmkzfnsatlsl',
+            coins: [
+              {
+                amount: '10',
+                denom: 'ufct',
+              },
+            ],
+          },
+          {
+            address: 'firma1xu388ml6krya3ysmlrup2ylxjtzhl4hln2nxzj',
+            coins: [
+              {
+                amount: '10',
+                denom: 'ufct',
+              },
+            ],
+          },
+        ],
+      },
+    },
+  ],
+  sequence: '16',
+}
+
 export const wasm_execute_contract_boundary_test = {
   account_number: '0',
   chain_id: 'neutron-1',
