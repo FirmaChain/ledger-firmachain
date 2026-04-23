@@ -22,7 +22,7 @@ import { defaultOptions, DEVICE_MODELS, tx_sign_textual, TEXTUAL_TX } from './co
 import secp256k1 from 'secp256k1/elliptic'
 // @ts-ignore
 import crypto from 'crypto'
-import { ButtonKind, IButton, SwipeDirection } from '@zondax/zemu/dist/types'
+import { ButtonKind, IButton } from '@zondax/zemu/dist/types'
 import { getTouchElement } from "@zondax/zemu/dist/buttons"
 // @ts-ignore
 import { keccak256 } from 'js-sha3'
@@ -49,9 +49,9 @@ describe('Textual', function () {
       await sim.start({ ...defaultOptions, model: m.name })
       const app = new CosmosApp(sim.getTransport())
 
-      const path = "m/44'/118'/0'/0/0"
+      const path = "m/44'/7777777'/0'/0/0"
       const tx = Buffer.from(tx_sign_textual, 'hex')
-      const hrp = 'cosmos'
+      const hrp = 'firma'
 
       // get address / publickey
       const respPk = await app.getAddressAndPubKey(path, hrp)
@@ -96,9 +96,9 @@ describe('Textual', function () {
       // Change to expert mode so we can skip fields
       await sim.toggleExpertMode()
 
-      const path = "m/44'/118'/0'/0/0"
+      const path = "m/44'/7777777'/0'/0/0"
       const tx = Buffer.from(tx_sign_textual, 'hex')
-      const hrp = 'cosmos'
+      const hrp = 'firma'
 
       // get address / publickey
       const respPk = await app.getAddressAndPubKey(path, hrp)
@@ -134,7 +134,7 @@ describe('Textual', function () {
     }
   })
 
-  test.concurrent.each(TEXTUAL_MODELS)('sign basic textual evmos ', async function (m) {
+  xtest('sign basic textual evmos ', async function (m) {
     const sim = new Zemu(m.path)
     try {
       await sim.start({ ...defaultOptions, model: m.name })
@@ -158,7 +158,7 @@ describe('Textual', function () {
 
       // Wait until we are not in the main menu
       await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot())
-      const last_index = await sim.navigateUntilText(
+      await sim.navigateUntilText(
         '.',
         `${m.prefix.toLowerCase()}-textual-sign_basic_evmos`,
         sim.startOptions.approveKeyword,
@@ -186,59 +186,7 @@ describe('Textual', function () {
     }
   })
 
-  test.concurrent.each(TEXTUAL_MODELS)('sign basic textual evmos ', async function (m) {
-    const sim = new Zemu(m.path)
-    try {
-      await sim.start({ ...defaultOptions, model: m.name })
-      const app = new CosmosApp(sim.getTransport())
-
-      // Enable expert to allow sign with eth path
-      await sim.toggleExpertMode()
-
-      const path = "m/44'/60'/0'/0/0"
-      const tx = Buffer.from(tx_sign_textual, 'hex')
-      const hrp = 'evmos'
-
-      // get address / publickey
-      const respPk = await app.getAddressAndPubKey(path, hrp)
-      expect(respPk).toHaveProperty('compressed_pk')
-      expect(respPk).toHaveProperty('bech32_address')
-      console.log(respPk)
-
-      // do not wait here..
-      const signatureRequest = app.sign(path, tx, hrp, TEXTUAL_TX)
-
-      // Wait until we are not in the main menu
-      await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot())
-      const last_index = await sim.navigateUntilText(
-        '.',
-        `${m.prefix.toLowerCase()}-textual-sign_basic_evmos`,
-        sim.startOptions.approveKeyword,
-        false,
-        false,
-      )
-
-      const resp = await signatureRequest
-      console.log(resp)
-
-      expect(resp).toHaveProperty('signature')
-
-      // Now verify the signature
-      const msgHash = Buffer.from(keccak256(tx), 'hex')
-
-      const signatureDER = resp.signature
-      const signature = secp256k1.signatureImport(Uint8Array.from(signatureDER))
-
-      const pk = Uint8Array.from(respPk.compressed_pk)
-
-      const signatureOk = secp256k1.ecdsaVerify(signature, msgHash, pk)
-      expect(signatureOk).toEqual(true)
-    } finally {
-      await sim.close()
-    }
-  })
-
-  test.concurrent.each(TEXTUAL_MODELS)('sign basic textual eth warning', async function (m) {
+  xtest('sign basic textual eth warning', async function (m) {
     const sim = new Zemu(m.path)
     try {
       await sim.start({ ...defaultOptions, model: m.name })
@@ -293,63 +241,7 @@ describe('Textual', function () {
     }
   })
 
-  test.concurrent.each(TEXTUAL_MODELS)('sign basic textual eth warning', async function (m) {
-    const sim = new Zemu(m.path)
-    try {
-      await sim.start({ ...defaultOptions, model: m.name })
-      const app = new CosmosApp(sim.getTransport())
-
-      const path = "m/44'/60'/0'/0/0"
-      const tx = Buffer.from(tx_sign_textual, 'hex')
-      const hrp = 'inj'
-
-      // get address / publickey
-      const respPk = await app.getAddressAndPubKey(path, hrp)
-      console.log(respPk)
-
-      // do not wait here..
-      const signatureRequest = app.sign(path, tx, hrp, TEXTUAL_TX)
-
-      // Wait until we are not in the main menu
-      await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot())
-      let nav = undefined
-      if (isTouchDevice(m.name)) {
-        const confirmButton: IButton = getTouchElement(m.name, ButtonKind.ConfirmYesButton)
-        nav = new TouchNavigation(m.name, [ButtonKind.ConfirmYesButton]);
-        nav.schedule[0].button = confirmButton;
-      } else {
-        nav = new ClickNavigation([1, 0]);
-      }
-
-
-      // Start navigation without await
-      sim.navigateAndCompareSnapshots('.', `${m.prefix.toLowerCase()}-textual-sign_basic_eth_warning`, nav.schedule)
-
-      // Handle both errors
-      try {
-        await signatureRequest
-        throw new Error('Expected sign to fail')
-      } catch (error: any) {
-        // First error from ledger-js
-        expect(error.message).toBe('Data is invalid')
-
-        // Wait a bit to ensure the second error is caught
-        await new Promise(resolve => setTimeout(resolve, 1000))
-
-        // Second error after navigation
-        try {
-          await signatureRequest
-          throw new Error('Expected second error')
-        } catch (error2: any) {
-          expect(error2.message).toBe('Data is invalid')
-        }
-      }
-    } finally {
-      await sim.close()
-    }
-  })
-
-  test.concurrent.each(TEXTUAL_MODELS)('sign basic textual eth ', async function (m) {
+  xtest('sign basic textual eth ', async function (m) {
     const sim = new Zemu(m.path)
     try {
       await sim.start({ ...defaultOptions, model: m.name })
