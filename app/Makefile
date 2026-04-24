@@ -140,6 +140,9 @@ endif
 
 # Configure devices and permissions
 include $(CURDIR)/../deps/ledger-zxlib/makefiles/Makefile.devices
+# Swap is compiled but the app is not yet registered as a swap library partner,
+# so the LIBRARY flag (0x800) must not be set in the manifest.
+HAVE_APPLICATION_FLAG_LIBRARY =
 # Create installer script
 include $(CURDIR)/../deps/ledger-zxlib/makefiles/Makefile.installer_script
 # Enable logging
